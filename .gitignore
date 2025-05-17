@@ -13,3 +13,11 @@ states/
 # Optional
 .env
 .env.local
+
+node_modules/
+cache/
+coverage/
+typechain-types/
+coverage.json
+package-lock.json
+.DS_Store
