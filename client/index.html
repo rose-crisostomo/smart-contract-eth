@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TestNFT app</title>
+    </head>
+    <body>
+        <div id="app">
+            <div id="disconnected">
+                <h2>Connect wallet: </h2>
+                <div id="providerButtons"></div>
+            </div>
+            <div id="connected">
+                <div>
+                    <h2>Balance:</h2>
+                    <div id="balance"></div>
+                <div>
+
+                <!-- </div>
+                    <h2>Last 10 Transactions:</h2>
+                    <div id="transactions"></div>
+                </div> -->
+
+                <div>
+                    <h2>TestNFT (TNFT)</h2>
+                    <button id="mint">Mint 1 token</button>
+                    <div>
+                        <h3>Balance:</h3>
+                        <div id="nft-balance"></div>
+                        <button id="get-token" onclick="getBalance()">Get Token ID</button>
+                    <div>
+                    <!-- <div>
+                        <h3>Transfer to:</h3>
+                        <form id="transfer-form">
+                            <input type="text" id="to-address" placeholder="e.g., 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" required>
+                            <input type="number" id="token-id" placeholder="e.g., 0" required>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>
