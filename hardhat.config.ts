@@ -1,10 +1,10 @@
-import dotenv from "dotenv"
-import "@nomiclabs/hardhat-ethers"
-import "@typechain/hardhat"
+import dotenv from "dotenv";
+import "@nomiclabs/hardhat-ethers";
+import "@typechain/hardhat";
 import { HardhatUserConfig } from "hardhat/config";
-import "solidity-coverage"
+import "solidity-coverage";
 
-dotenv.config()
+dotenv.config();
 const { SEPOLIA_API_URL, METAMASK_PRIVATE_KEY } = process.env;
 
 const config: HardhatUserConfig = {
@@ -17,6 +17,6 @@ const config: HardhatUserConfig = {
          accounts: [`0x${METAMASK_PRIVATE_KEY}`]
       }
    },
-}
+};
 
 export default config;

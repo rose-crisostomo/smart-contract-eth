@@ -1,20 +1,18 @@
-import './style.css'
-import { listProviders } from "./providers.ts"
-import { ethers } from "ethers"
+import './style.css';
+import { listProviders } from "./providers.ts";
+import { ethers } from "ethers";
 import { BrowserProvider } from "ethers/providers";
 import type { JsonRpcSigner } from 'ethers';
 import type { Contract } from 'ethers';
 
 let provider: Readonly<EIP1193Provider> | null = null;
-let walletAddress: string | null = null;
 let signer: JsonRpcSigner;
 let contract: Contract;
 let signerAddress: string;
 let balance: number;
 
-export async function setProviderAndAddress(p: Readonly<EIP1193Provider>, a: string) {
+export async function setProviderAndAddress(p: Readonly<EIP1193Provider>) {
     provider = p;
-    walletAddress = a;
 
     signer = await new BrowserProvider(provider as EIP1193Provider).getSigner();
     contract = new ethers.Contract(contractAddress, contractAbi, signer);
@@ -27,12 +25,12 @@ export async function setProviderAndAddress(p: Readonly<EIP1193Provider>, a: str
 const contractAbi = [
     "function balanceOf(address owner) view returns (uint256)",
     "function mint(uint256 quantity)",
-    "function safeTransferFrom(address from, address to, uint256 tokenId)",
+    // "function safeTransferFrom(address from, address to, uint256 tokenId)",
     "function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)",
 ];
 const contractAddress = "0x7570c2D07EEe5B0E1A0AC3eBDf833b9a01ee368C";
 
-listProviders(document.querySelector<HTMLDivElement>("#providerButtons")!)
+listProviders(document.querySelector<HTMLDivElement>("#providerButtons")!);
 
 async function getBalance() {
     try {
@@ -56,7 +54,7 @@ async function configMintButton() {
         catch (error: unknown) {
             alert(error);
         }
-    }
+    };
 }
 
 async function getTokenId() {
@@ -73,14 +71,14 @@ async function getTokenId() {
     }
 }
 
-async function transferToken(to: string, tokenId: ethers.BigNumberish) {
-    try {
-        await contract.safeTransferFrom(signerAddress, to, tokenId);
-        alert("Transferred successfully");
-    } catch (error: unknown) {
-        alert(error);
-    }
-}
+// async function transferToken(to: string, tokenId: ethers.BigNumberish) {
+//     try {
+//         await contract.safeTransferFrom(signerAddress, to, tokenId);
+//         alert("Transferred successfully");
+//     } catch (error: unknown) {
+//         alert(error);
+//     }
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
     const getTokenButton = document.getElementById("get-token");

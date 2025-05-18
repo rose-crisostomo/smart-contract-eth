@@ -7,7 +7,7 @@ async function main() : Promise<void> {
     await contract.deployed();
 
     console.log("Contract deployed to address:", contract.address);
-};
+}
 
 main()
     .then(() => process.exit(0))
